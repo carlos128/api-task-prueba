@@ -1,4 +1,4 @@
-package com.taks.prueba;
+package com.task.prueba;
 
 
 import org.springframework.http.HttpMethod;

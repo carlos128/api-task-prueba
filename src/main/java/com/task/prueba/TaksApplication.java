@@ -1,13 +1,13 @@
-package com.taks.prueba;
+package com.task.prueba;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class TaksBackEndApplication {
+public class TaksApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TaksBackEndApplication.class, args);
+		SpringApplication.run(TaksApplication.class, args);
 	}
 
 }
