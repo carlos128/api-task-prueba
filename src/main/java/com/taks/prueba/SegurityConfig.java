@@ -44,7 +44,10 @@ public class SegurityConfig  extends  WebSecurityConfigurerAdapter {
 				.antMatchers(HttpMethod.POST,SIGNUP,LOGIN).permitAll()
 				.anyRequest().authenticated().and()
 				.addFilter(new JWTAuthenticationFilter(authenticationManager()))
-                .addFilter(new JWTAuthorizationFilter(authenticationManager()));
+				.addFilter(new JWTAuthorizationFilter(authenticationManager()));
+		http.requiresChannel()
+	      .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
+	      .requiresSecure();
 	}
 	@Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
