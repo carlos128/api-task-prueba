@@ -35,7 +35,7 @@ public class SpringFoxConfig implements WebMvcConfigurer {
 	            .description("SERVICIOS  PARA LA GESTIÓN DE  TAREAS")
 	            .version("1.0.0")
 	            .license("Apache License Version 2.0")
-	            .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0\"")
+	            .licenseUrl("https://www.apache.org/licenses/LICENSE-2.0")
 	            .build();
 	  }
 
