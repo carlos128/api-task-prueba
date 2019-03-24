@@ -1,4 +1,4 @@
-package com.task.prueba;
+package com.taks.prueba;
 
 
 import org.springframework.context.annotation.Bean;
