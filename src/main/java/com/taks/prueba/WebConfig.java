@@ -18,10 +18,7 @@ public class WebConfig  implements WebMvcConfigurer{
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-	 @Override
-	 public void addInterceptors(InterceptorRegistry registry){
-	        registry.addInterceptor(new CorsFilter()).addPathPatterns("/**");
-	  }
+	
 	@Override
 	public  void  addCorsMappings( CorsRegistry  registry) {
 		
