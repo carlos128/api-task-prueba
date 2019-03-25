@@ -39,18 +39,12 @@ public class SegurityConfig  extends  WebSecurityConfigurerAdapter {
 		return new BCryptPasswordEncoder();
 	}
 	
-	@Bean
-    CorsFilter corsFilter() {
-        CorsFilter filter = new CorsFilter();
-        return filter;
-    }
 
 	
 	@Override
 	protected  void  configure( HttpSecurity http) throws Exception {
-		http.addFilterBefore(corsFilter(), SessionManagementFilter.class)
-			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-			//.cors().and()
+		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+			 .cors().and()
 			//.csrf().disable()
 			.authorizeRequests()
 			.antMatchers(HttpMethod.POST,SIGNUP).permitAll()
