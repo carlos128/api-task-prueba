@@ -17,6 +17,7 @@ import org.springframework.security.web.session.SessionManagementFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 
 import com.google.common.collect.ImmutableList;
 import com.taks.prueba.segurity.JWTAuthenticationFilter;
@@ -53,7 +54,7 @@ public class SegurityConfig  extends  WebSecurityConfigurerAdapter {
 	protected  void  configure( HttpSecurity http) throws Exception {
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			 .cors().and()
-			 //.csrf().disable()
+			 .csrf().disable()
 			.authorizeRequests()
 			.antMatchers(HttpMethod.POST,SIGNUP).permitAll()
 			.antMatchers(HttpMethod.POST,LOGIN).permitAll()
@@ -74,7 +75,7 @@ public class SegurityConfig  extends  WebSecurityConfigurerAdapter {
 	 } 
 
 	 @Bean
-	    public CorsConfigurationSource corsConfigurationSource() {
+	    public CorsFilter corsFilter() {
 	        final CorsConfiguration configuration = new CorsConfiguration();
 	        configuration.setAllowedOrigins(ImmutableList.of("*"));
 	        configuration.setAllowedMethods(ImmutableList.of("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH"));
@@ -82,7 +83,7 @@ public class SegurityConfig  extends  WebSecurityConfigurerAdapter {
 	        configuration.setAllowedHeaders(ImmutableList.of("Authorization", "Cache-Control", "Content-Type"));
 	        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 	        source.registerCorsConfiguration("/**", configuration);
-	        return source;
+	        return new CorsFilter(source);
 	    }
 }
 
