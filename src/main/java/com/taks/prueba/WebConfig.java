@@ -13,7 +13,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 @EnableWebMvc
 @ComponentScan()
-public class WebConfig extends WebSecurityConfigurerAdapter implements WebMvcConfigurer{
+public class WebConfig  implements WebMvcConfigurer{
 	
 	@Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -23,7 +23,7 @@ public class WebConfig extends WebSecurityConfigurerAdapter implements WebMvcCon
 	@Override
 	public  void  addCorsMappings( CorsRegistry  registry) {
 		
-		registry.addMapping("/**").allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
+		registry.addMapping("/**");
 	}
 	
 }
