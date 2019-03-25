@@ -8,6 +8,8 @@ import static com.taks.prueba.utilitis.Constants.SECRET;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -62,11 +64,14 @@ public class JWTAuthenticationFilter extends  UsernamePasswordAuthenticationFilt
 	                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
 	                .signWith(SignatureAlgorithm.HS512, SECRET)
 	                .compact();
-	       /* res.addHeader("Access-Control-Allow-Origin", "http://localhost:4200/");
-	        res.setHeader("Access-Control-Allow-Methods", "POST, GET,OPTIONS,DELETE, PUT");
-	        res.setHeader("Access-Control-Allow-Credentials", "true");
-	        res.setHeader("Access-Control-Max-Age", "3600");
-	        res.setHeader("Access-Control-Allow-Headers", "Accept, Content-Type, Origin, Authorization, X-Auth-Token");*/
+	        
+	        Map<String, String> map =  new  HashMap<>();
+	        map.put("acces_token", token);
+	        map.put("type", "Bearer");
+	        ObjectMapper mapper = new ObjectMapper();
+	        String value = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(map);
+	        
+	        res.getWriter().write(value);
 	        res.addHeader(HEADER_STRING, TOKEN_PREFIX + token);
 	    }
 
