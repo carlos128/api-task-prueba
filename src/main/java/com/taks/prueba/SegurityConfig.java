@@ -50,7 +50,7 @@ public class SegurityConfig  extends  WebSecurityConfigurerAdapter {
 		http.addFilterBefore(corsFilter(), SessionManagementFilter.class)
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 			 //.cors().and()
-			 //.csrf().disable()
+			 //.csrf().ignoringRequestMatchers(requestMatchers)
 			.authorizeRequests()
 			.antMatchers(HttpMethod.POST,SIGNUP).permitAll()
 			.antMatchers(HttpMethod.POST,LOGIN).permitAll()
