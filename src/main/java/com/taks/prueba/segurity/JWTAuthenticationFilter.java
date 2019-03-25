@@ -62,7 +62,7 @@ public class JWTAuthenticationFilter extends  UsernamePasswordAuthenticationFilt
 	                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
 	                .signWith(SignatureAlgorithm.HS512, SECRET)
 	                .compact();
-	        res.addHeader("Access-Control-Allow-Origin", "*");
+	        res.addHeader("Access-Control-Allow-Origin", "http://localhost:4200/");
 	        res.setHeader("Access-Control-Allow-Methods", "POST, GET,  DELETE, PUT");
 	        res.setHeader("Access-Control-Allow-Credentials", "true");
 	        res.setHeader("Access-Control-Max-Age", "3600");
