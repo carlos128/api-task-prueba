@@ -56,7 +56,6 @@ public class SegurityConfig  extends  WebSecurityConfigurerAdapter {
 			.antMatchers(HttpMethod.POST,SIGNUP).permitAll()
 			.antMatchers(HttpMethod.POST,LOGIN).permitAll()
 			.anyRequest().authenticated().and()
-			.httpBasic().and()
 			.addFilter(new JWTAuthenticationFilter(authenticationManager()))
 			.addFilter(new JWTAuthorizationFilter(authenticationManager()));
 		http.requiresChannel()
